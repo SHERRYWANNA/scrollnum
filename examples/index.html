@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>数字滚动测试页面</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <style>
+        button {
+            background-color: #000;
+            color: #fff;
+            padding: .5em 1em;
+            display: block;
+            margin-bottom: 1em;
+        }
+        .f_btn {
+            background-color: #cf3f25;
+        }
+        .longdiv {
+            height: 1000px;
+        }
+        .layer-long .layer_content {
+            height: 100px;
+            overflow: auto;
+        }
+        .f_s120 {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <scroll-num :numbers="showTotalAmount" :numberclass="'f_s120 f-bold f_orange'"></scroll-num>
+    <button class="f_btn" @click="addNum">数字随机增长</button>
+</div>
+<script type="text/javascript" src="./dist/index.js"></script>
+</body>
+</html>
