@@ -1,6 +1,6 @@
 {
-  "name": "@ths/scrollnum",
-  "version": "1.0.2",
+  "name": "@arni/scrollnum",
+  "version": "1.0.0",
   "description": "scrollnum",
   "main": "src/index.js",
   "scripts": {
