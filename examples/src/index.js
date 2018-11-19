@@ -7,13 +7,14 @@ var container = new Vue({
         scrollNum
     },
     data: {
-        showTotalAmount: '000'
+        showTotalAmount: ''
     },
     methods: {
         addNum() {
-            let _num = Math.random() * 50;
+            let _num = Math.ceil(Math.random() * 100);
+            _num = _num + parseInt(this.showTotalAmount ? this.showTotalAmount : '0');
 
-            this.showTotalAmount = parseInt(_num + this.showTotalAmount);
+            this.showTotalAmount = _num;
         }
     }
 });

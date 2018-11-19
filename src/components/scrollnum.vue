@@ -28,7 +28,6 @@ export default {
     },
     data() {
         return {
-            mNumbers: '0',
             numArr: ['0'],
             numberClass: this.numberclass
         };
@@ -42,19 +41,16 @@ export default {
         }
     },
     watch: {
-        numbers(value) {
-            if (value) {
-                this.numArr = value.toString().split('');
-            }
-        },
-        mNumbers(value) {
-            if (value) {
-                this.numArr = value.toString().split('');
-            }
+        numbers: {
+            handler(newValue, oldValue) {
+                if (newValue) {
+                    this.numArr = newValue.toString().split('');
+                } else {
+                    this.numbers = '0';
+                }
+            },
+            immediate: true
         }
-    },
-    mounted() {
-        this.mNumbers = this.numbers;
     }
 };
 </script>

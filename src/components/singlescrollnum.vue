@@ -18,7 +18,7 @@ export default {
             circleNum: 10,
             numOffset: 0,
             scrollStyle: {
-                top: "0",
+                top: "100%",
                 webkitTransitionDuration: "",
                 oTransitionDuration: "",
                 transitionDuration: ""
@@ -79,24 +79,37 @@ export default {
         }
     },
     watch: {
-        num(targetNum, nowNum) {
-            targetNum = parseInt(targetNum);
-            nowNum = parseInt(nowNum);
-            if (targetNum === nowNum) {
-                return;
-            }
-            if (targetNum < nowNum) {
-                this.toNextPage = 1;
-            }
-            this.numOffset = targetNum - nowNum;
-            this.num = targetNum;
+        num: {
+            handler(targetNum, nowNum) {
+                targetNum = parseInt(targetNum);
+                nowNum = parseInt(nowNum);
+                if (Number.isNaN(nowNum)) {
+                    this.setAnimationStyle();
+                    nowNum = 0;
+                }
+                if (targetNum === nowNum) {
+                    return;
+                }
+                if (targetNum < nowNum) {
+                    this.toNextPage = 1;
+                }
+                this.numOffset = targetNum - nowNum;
+                this.num = targetNum;
+            },
+            immediate: true
         },
-        numOffset(value) {
-            if (value) {
-                this.setAnimationStyle();
-                this.numOffset = 0;
-            }
-        } 
+        numOffset: {
+            handler(newValue, oldValue) {
+                if (newValue) {
+                    this.setAnimationStyle();
+                    this.numOffset = 0;
+                } else if (Number.isNaN(oldValue)) {
+                    this.numOffset = 0;
+                    this.setAnimationStyle();
+                }
+            },
+            immediate: true
+        }
     },
     mounted() {
         this.addNumScrollEndEvent();
