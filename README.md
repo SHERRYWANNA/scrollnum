@@ -6,7 +6,7 @@
 
 ![数字滚动效果](src/images/scrollnum.gif)
 
-测试地址：[数字向下滚动效果](https://sherrywanna.github.io/scrollnum/exemples/index.html)
+测试地址：[数字向下滚动效果](https://sherrywanna.github.io/scrollnum/examples/index.html)
 
 ##### 安装
 
