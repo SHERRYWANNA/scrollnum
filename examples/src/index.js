@@ -7,14 +7,30 @@ var container = new Vue({
         scrollNum
     },
     data: {
-        showTotalAmount: ''
+        showTotalAmount: '000'
     },
     methods: {
         addNum() {
             let _num = Math.ceil(Math.random() * 100);
-            _num = _num + parseInt(this.showTotalAmount ? this.showTotalAmount : '0');
-
-            this.showTotalAmount = _num;
+            _num = (_num + parseInt(this.showTotalAmount)).toString();
+            
+            this.showTotalAmount = this.addZero(_num, 3);
+        },
+        addZero(num, length) {
+            num = num.toString();
+            
+            if (num.length === length) {
+                return num;
+            } 
+            if (num.length > length) {
+                num = (parseInt(num)%1000).toString();
+            } 
+            if (num.length < length) {
+                for (let i = 0, len = length - num.length; i < len; i++) {
+                    num = '0' + num;
+                }
+            }
+            return num.toString();
         }
     }
 });

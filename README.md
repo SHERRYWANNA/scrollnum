@@ -2,7 +2,13 @@
 
 基于vue的数字向下滚动组件，构建工具使用webpack。
 
-#### 安装
+##### 例式
+
+![数字滚动效果](src/images/scrollnum.gif)
+
+测试地址：[数字向下滚动效果](https://sherrywanna.github.io/scrollnum/exemples/index.html)
+
+##### 安装
 
 ###### npm包名： @arni/scrollnum
 
