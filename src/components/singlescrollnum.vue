@@ -52,14 +52,18 @@ export default {
             var _value = this.numOffset < 0 ? this.numOffset + 10 : this.numOffset,
                 _topNum = this.toNextPage ? this.num + 10 : this.num,
                 _topStyle = '-' + (_topNum*100) + '%',
-                _transitionTime = 10 === _value ? '0s' : (_value * this.animateTime + 's');
+                _transitionTime = 10 === _value ? '0s' : (_value * this.animateTime + 's'),
+                _style = {};
+
             ["webkitTransitionDuration", "oTransitionDuration", "transitionDuration"].forEach((item) => {
-                this.scrollStyle[item] = _transitionTime;
+                _style[item] = _transitionTime;
             });
             
             ["top"].forEach((item) => {
-                this.scrollStyle[item] = _topStyle;
+                _style[item] = _topStyle;
             });
+
+            this.scrollStyle = _style;
         },
         addNumScrollEndEvent() {
             this.addAnimationEndEvent(this.$refs.content, () => {
@@ -83,7 +87,7 @@ export default {
             handler(targetNum, nowNum) {
                 targetNum = parseInt(targetNum);
                 nowNum = parseInt(nowNum);
-                if (Number.isNaN(nowNum)) {
+                if (isNaN(nowNum)) {
                     this.setAnimationStyle();
                     nowNum = 0;
                 }
@@ -103,7 +107,7 @@ export default {
                 if (newValue) {
                     this.setAnimationStyle();
                     this.numOffset = 0;
-                } else if (Number.isNaN(oldValue)) {
+                } else if (!oldValue) {
                     this.numOffset = 0;
                     this.setAnimationStyle();
                 }
